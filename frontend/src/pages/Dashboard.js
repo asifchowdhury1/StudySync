@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   Grid,
   Paper,
@@ -8,49 +8,55 @@ import {
   CardContent,
   LinearProgress,
   Chip,
-  Alert,
-  CircularProgress,
 } from '@mui/material';
 import { Schedule, TrendingUp, Subject, Analytics } from '@mui/icons-material';
-import { useApi } from '../hooks/useApi';
-import { analyticsAPI, sessionAPI } from '../services/api';
 import D3TimeSeriesChart from '../components/D3TimeSeriesChart';
 import D3PieChart from '../components/D3PieChart';
 
 const Dashboard = () => {
-  const [timeSeriesData, setTimeSeriesData] = useState([]);
-  const [todaySummary, setTodaySummary] = useState(null);
+  // Mock data for demonstration
+  const dashboardData = {
+    overall: {
+      totalStudyTime: 1200,
+      totalSessions: 25,
+      averageFocusRating: 8.3,
+      averageDifficultyRating: 6.8
+    },
+    periods: {
+      today: { studyTime: 120, sessions: 3, goalProgress: 50 },
+      thisWeek: { studyTime: 480, sessions: 12, goalProgress: 68.5 },
+      thisMonth: { studyTime: 1200, sessions: 25 },
+      thisYear: { studyTime: 1200, sessions: 25 }
+    },
+    goals: { dailyStudyTime: 240, weeklyStudyTime: 700 }
+  };
 
-  const { data: dashboardData, loading: dashboardLoading, error: dashboardError } = useApi(
-    () => analyticsAPI.getDashboard()
-  );
+  const subjectsData = {
+    subjects: [
+      { subject: { name: 'Computer Science', color: '#1976d2' }, totalTime: 480 },
+      { subject: { name: 'Mathematics', color: '#2e7d32' }, totalTime: 360 },
+      { subject: { name: 'Physics', color: '#d32f2f' }, totalTime: 240 },
+      { subject: { name: 'Literature', color: '#9c27b0' }, totalTime: 120 }
+    ]
+  };
 
-  const { data: subjectsData, loading: subjectsLoading } = useApi(
-    () => analyticsAPI.getSubjects({ days: 30 })
-  );
-
-  const { data: timeSeriesResponse, loading: timeSeriesLoading } = useApi(
-    () => analyticsAPI.getTimeSeries({ period: 'daily', days: 14 })
-  );
-
-  useEffect(() => {
-    const fetchTodaySummary = async () => {
-      try {
-        const response = await sessionAPI.getTodaySummary();
-        setTodaySummary(response.data);
-      } catch (error) {
-        console.error('Error fetching today summary:', error);
-      }
+  const timeSeriesData = Array.from({ length: 14 }, (_, i) => {
+    const date = new Date();
+    date.setDate(date.getDate() - (13 - i));
+    return {
+      date: date.toISOString().split('T')[0],
+      totalTime: Math.floor(Math.random() * 180) + 60,
+      sessionCount: Math.floor(Math.random() * 4) + 1
     };
+  });
 
-    fetchTodaySummary();
-  }, []);
-
-  useEffect(() => {
-    if (timeSeriesResponse?.data) {
-      setTimeSeriesData(timeSeriesResponse.data);
-    }
-  }, [timeSeriesResponse]);
+  const todaySummary = {
+    sessions: [
+      { subject: 'Computer Science', duration: 45, formattedDuration: '45m', startTime: new Date(Date.now() - 3 * 60 * 60 * 1000), endTime: new Date(Date.now() - 2.25 * 60 * 60 * 1000) },
+      { subject: 'Mathematics', duration: 60, formattedDuration: '1h', startTime: new Date(Date.now() - 2 * 60 * 60 * 1000), endTime: new Date(Date.now() - 1 * 60 * 60 * 1000) },
+      { subject: 'Physics', duration: 30, formattedDuration: '30m', startTime: new Date(Date.now() - 30 * 60 * 1000), endTime: new Date() }
+    ]
+  };
 
   const formatTime = (minutes) => {
     const hours = Math.floor(minutes / 60);
@@ -102,21 +108,6 @@ const Dashboard = () => {
     </Card>
   );
 
-  if (dashboardLoading || subjectsLoading || timeSeriesLoading) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="60vh">
-        <CircularProgress size={60} />
-      </Box>
-    );
-  }
-
-  if (dashboardError) {
-    return (
-      <Alert severity="error" sx={{ mt: 2 }}>
-        Error loading dashboard: {dashboardError}
-      </Alert>
-    );
-  }
 
   return (
     <Box>

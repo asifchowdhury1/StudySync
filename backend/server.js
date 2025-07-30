@@ -5,15 +5,11 @@
  */
 
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-// Import routes
-const authRoutes = require('./routes/auth');
-const sessionRoutes = require('./routes/sessions');
-const subjectRoutes = require('./routes/subjects');
-const analyticsRoutes = require('./routes/analytics');
+// Import mock routes (no database)
+const mockRoutes = require('./routes/mock');
 
 // Load environment variables
 dotenv.config();
@@ -29,19 +25,10 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/studytracker', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB Connected Successfully'))
-.catch(err => console.error('MongoDB Connection Error:', err));
+console.log('StudyTracker API Server - Mock Mode (No Database)');
 
-// API Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/sessions', sessionRoutes);
-app.use('/api/subjects', subjectRoutes);
-app.use('/api/analytics', analyticsRoutes);
+// API Routes - Mock endpoints
+app.use('/api', mockRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

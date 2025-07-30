@@ -4,10 +4,6 @@ import {
   Toolbar,
   Typography,
   Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  Avatar,
   Box,
   Drawer,
   List,
@@ -16,6 +12,7 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
+  IconButton,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -23,20 +20,15 @@ import {
   Schedule,
   Subject,
   Analytics,
-  Person,
-  Logout,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [anchorEl, setAnchorEl] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const menuItems = [
@@ -46,14 +38,6 @@ const Navbar = () => {
     { text: 'Analytics', icon: <Analytics />, path: '/analytics' },
   ];
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleProfileMenuClose = () => {
-    setAnchorEl(null);
-  };
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -61,11 +45,6 @@ const Navbar = () => {
   const handleNavigation = (path) => {
     navigate(path);
     setMobileOpen(false);
-  };
-
-  const handleLogout = () => {
-    logout();
-    handleProfileMenuClose();
   };
 
   const drawer = (
@@ -145,39 +124,8 @@ const Navbar = () => {
             </Box>
           )}
 
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Typography variant="body2" sx={{ display: { xs: 'none', sm: 'block' } }}>
-              Welcome, {user?.name}
-            </Typography>
-            <IconButton onClick={handleProfileMenuOpen} color="inherit">
-              <Avatar sx={{ width: 32, height: 32, bgcolor: 'secondary.main' }}>
-                {user?.name?.charAt(0).toUpperCase()}
-              </Avatar>
-            </IconButton>
-          </Box>
         </Toolbar>
       </AppBar>
-
-      <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleProfileMenuClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      >
-        <MenuItem onClick={() => { handleNavigation('/profile'); handleProfileMenuClose(); }}>
-          <ListItemIcon>
-            <Person fontSize="small" />
-          </ListItemIcon>
-          Profile
-        </MenuItem>
-        <MenuItem onClick={handleLogout}>
-          <ListItemIcon>
-            <Logout fontSize="small" />
-          </ListItemIcon>
-          Logout
-        </MenuItem>
-      </Menu>
 
       {isMobile && (
         <Drawer
