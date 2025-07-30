@@ -320,16 +320,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👨‍💻 Author
 
-**CS3744 Student**  
+**Asif Chowdhury**  
 Virginia Tech Computer Science
-
-## 🙏 Acknowledgments
-
-- Virginia Tech CS3744 Course Staff
-- Material-UI team for excellent React components
-- D3.js community for visualization inspiration
-- MongoDB team for robust database solutions
-
----
-
-**Note**: This project was developed as part of CS3744 coursework at Virginia Tech, demonstrating comprehensive full-stack web development skills and modern React patterns.
