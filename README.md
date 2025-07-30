@@ -21,7 +21,7 @@ This project demonstrates modern full-stack web development practices while prov
 - **Analytics Dashboard**: Interactive visualizations and progress tracking
 - **Goal Setting**: Personal daily/weekly study time targets with progress monitoring
 
-![Dashboard Screenshot](screenshots/dashboard.png)
+![Dashboard Screenshot](dashboard.png)
 *Main dashboard showing study progress, goals, and today's sessions*
 
 ### Advanced Features
@@ -31,13 +31,13 @@ This project demonstrates modern full-stack web development practices while prov
 - **Comprehensive Analytics**: Study patterns, effectiveness metrics, and insights
 - **Data Export**: Session summaries and progress reports
 
-![Analytics Screenshot](screenshots/analytics.png)
+![Analytics Screenshot](analytics.png)
 *Advanced analytics page with D3.js visualizations and study pattern analysis*
 
-![Sessions Screenshot](screenshots/sessions.png)
+![Sessions Screenshot](sessions.png)
 *Session management interface with real-time timer and detailed logging*
 
-![Subjects Screenshot](screenshots/subjects.png)
+![Subjects Screenshot](subjects.png)
 *Subject management with progress tracking and color-coded organization*
 
 ## 🏗️ Architecture
