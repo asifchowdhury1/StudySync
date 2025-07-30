@@ -319,24 +319,4 @@ npm test
 
 **Developer**: Asif Chowdhury  
 **Email**: [asifc@vt.edu](mailto:asifc@vt.edu)  
-**Institution**: Virginia Tech - Computer Science Department  
-**Course**: CS3744 - GUI Design and Web Programming  
 
-### Project Repository
-- **GitHub**: [StudyTracker Repository](https://github.com/yourusername/studytracker)
-- **Live Demo**: [Coming Soon - Deployment Link]
-
-### Support & Feedback
-For questions, bug reports, or feature requests:
-1. **Email**: asifc@vt.edu
-2. **GitHub Issues**: Create an issue in the project repository
-3. **Course Forum**: Post in the CS3744 course discussion board
-
----
-
-**Acknowledgments**
-- Virginia Tech CS3744 Course Staff for guidance and support
-- Material-UI team for excellent React components and design system
-- D3.js community for powerful data visualization capabilities
-
-**Note**: This project was developed as part of CS3744 coursework at Virginia Tech, demonstrating comprehensive full-stack web development skills, modern React patterns, and professional software engineering practices.
