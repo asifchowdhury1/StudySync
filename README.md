@@ -321,4 +321,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 👨‍💻 Author
 
 **Asif Chowdhury**  
-Virginia Tech Computer Science
+Email: asifc@vt.edu
