@@ -338,6 +338,5 @@ For questions, bug reports, or feature requests:
 - Virginia Tech CS3744 Course Staff for guidance and support
 - Material-UI team for excellent React components and design system
 - D3.js community for powerful data visualization capabilities
-- MongoDB team for robust database solutions and documentation
 
 **Note**: This project was developed as part of CS3744 coursework at Virginia Tech, demonstrating comprehensive full-stack web development skills, modern React patterns, and professional software engineering practices.
