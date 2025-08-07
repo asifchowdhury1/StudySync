@@ -220,9 +220,7 @@ The StudyTracker application demonstrates a comprehensive study analytics platfo
 
 **Video Duration: 1-2 minutes**
 
-📹 **[Download Demo Video](Screen%20Recording%202025-08-07%20at%204.48.02%20PM.mov)** (Right-click → Save As to download)
-
-*Note: GitHub requires downloading .mov files to view them. Click the link above and select "Download" to watch the demo video.*
+[📹 **Watch Demo Video**](Screen%20Recording%202025-08-07%20at%204.48.02%20PM.mp4)
 
 **Video Content Overview:**
 - User registration and authentication
