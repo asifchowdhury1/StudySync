@@ -220,9 +220,7 @@ The StudyTracker application demonstrates a comprehensive study analytics platfo
 
 **Video Duration: 1-2 minutes**
 
-[Demo Video Placeholder - Video will be uploaded to this location]
-
-*The demo video showcases the complete StudyTracker application functionality including user authentication, session tracking, subject management, and interactive D3.js visualizations. The video demonstrates all core features and highlights the responsive design across different screen sizes.*
+[Demo Video - Screen Recording 2025-08-07 at 4.48.02 PM.mov](Screen%20Recording%202025-08-07%20at%204.48.02%20PM.mov)
 
 **Video Content Overview:**
 - User registration and authentication
